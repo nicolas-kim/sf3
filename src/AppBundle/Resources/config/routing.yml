@@ -7,6 +7,14 @@ ticket_submission_successful:
     path:     /tickets/submit/success
     defaults: { _controller: AppBundle:Sales:ticketSubmissionSuccessful }
 
+list_buyable_tickets:
+    path:     /tickets/list
+    defaults: { _controller: AppBundle:Sales:listBuyableTickets }
+
+submit_offer:
+    path:     /tickets/submit-offer/{eventName}
+    defaults: { _controller: AppBundle:Sales:submitOffer }
+
 member_sign_up:
     path:     /members/signup
     methods: ['GET', 'POST']

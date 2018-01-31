@@ -50,6 +50,43 @@ SQL;
         return $tickets;
     }
 
+    public function findBuyableTickets(): array
+    {
+        $query =<<<SQL
+SELECT * FROM tickets WHERE ;
+SQL;
+        $statement = $this->connection->prepare($query);
+        $statement->execute();
+
+        $tickets = [];
+
+        while ($row = $statement->fetch(\PDO::FETCH_ASSOC)) {
+
+            $tickets[] = $this->hydrateFromRow($row);
+        }
+
+        return $tickets;
+    }
+
+    public function findTicketFromName($name): array
+    {
+        $query=<<<SQL
+SELECT * FROM tickets WHERE event_name = "$name";
+SQL;
+        $statement = $this->connection->prepare($query);
+        $statement->execute();
+
+        $ticket = [];
+
+        while ($row = $statement->fetch(\PDO::FETCH_ASSOC)) {
+
+            $ticket[] = $this->hydrateFromRow($row);
+        }
+
+        return $ticket;
+
+    }
+
     private function hydrateFromRow(array $row): Ticket
     {
         return Ticket::fromArray($row);

@@ -4,6 +4,6 @@
 
 {% block body %}
     {% for ticket in tickets %}
-        <li>{{ ticket.eventName }}</li>
+        <li>{{ ticket.eventName }} <a class="nav-link" href="{{ path('submit_offer', {'eventName': ticket.eventName}) }}">Soumettre une offre</a></li>
     {% endfor %}
 {% endblock %}

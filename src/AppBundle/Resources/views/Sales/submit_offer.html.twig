@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Submit offer{% endblock %}
+
+{% block body %}
+    {% for t in ticket %}
+    Name: {{ t.event_name }}
+    Description: {{ t.event_description }}
+    Date: {{ t.event_date }}
+    {% endfor %}
+    {{ form(offerSubmissionForm) }}
+{% endblock %}
