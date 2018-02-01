@@ -26,7 +26,7 @@ security:
                 check_path: member_sign_in
             logout:
                 path: member_sign_out
-                target: homepage
+                target: latest_submitted_tickets
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
