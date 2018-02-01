@@ -1,0 +1,12 @@
+<div class="ticket-summary">
+    <p>{{ ticketSummary.eventName }}
+        <time datetime="{{ ticketSummary.eventDate | date }}">{{ ticketSummary.eventDate | date }}</time>
+        <i>({% transchoice ticketSummary.numberOfOffersMade with {'%count%': ticketSummary.numberOfOffersMade }%}
+            tickets.number_of_offers_made
+            {% endtranschoice %})</i>
+    </p>
+    <nav>
+        <a class="btn btn-primary" href="{{ path('make_an_offer', {'ticketId': ticketSummary.ticketId}) }}">View details</a>
+        <a class="btn btn-primary" href="{{ path('make_an_offer', {'ticketId': ticketSummary.ticketId}) }}">Make an offer</a>
+    </nav>
+</div>

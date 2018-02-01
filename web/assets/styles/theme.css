@@ -110,3 +110,10 @@ h6,
 .app-footer p:last-child {
     margin-bottom: 0;
 }
+
+.ticket-summary {
+    border: 1px solid #dadada;
+    background: #F5F5F5;
+    padding: .5em;
+    margin-bottom: 1em;
+}
