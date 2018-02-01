@@ -16,6 +16,12 @@
 
         <service id="repositories.member" alias="repositories.member.dbal" />
 
+        <service id="repositories.offer.dbal" class="Tiquette\Infrastructure\Repositories\DbalOfferRepository">
+            <argument type="service" id="doctrine.dbal.default_connection" />
+        </service>
+
+        <service id="repositories.offer" alias="repositories.offer.dbal" />
+
         <service id="app.member_password_encoder" class="Symfony\Component\Security\Core\Encoder\PlaintextPasswordEncoder">
             <argument>13</argument>
         </service>
@@ -24,7 +30,9 @@
             <argument type="service" id="app.member_password_encoder" />
         </service>
 
-        <service id="ticket_factory" class="AppBundle\Utils\TicketFactory" />
+        <service id="ticket_factory" class="AppBundle\Utils\TicketFactory">
+            <argument type="service" id="security.token_storage" />
+        </service>
 
 
         <service id="app.security.member_account_user_provider" class="AppBundle\Security\MemberAccountUserProvider">
@@ -38,6 +46,11 @@
 
         <service id="role_promoter" class="AppBundle\Security\RolePromoter">
             <argument type="service" id="repositories.member" />
+        </service>
+
+        <service id="offers_service" class="Tiquette\Domain\OffersService">
+            <argument type="service" id="repositories.ticket" />
+            <argument type="service" id="repositories.offer" />
         </service>
 
         <service id="commands.promote_member_to_admin" class="AppBundle\Command\PromoteAdminCommand">

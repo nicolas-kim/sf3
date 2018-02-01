@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block body %}
+    <nav>
+        <a href="{{ path('latest_submitted_tickets') }}">Latest</a>
+        <a href="{{ path('hot_in_trend_tickets') }}">Hot</a>
+    </nav>
+    <hr />
+    {% for ticketSummary in ticketSummaries %}
+        {% include '@App/Tickets/partials/ticket_summary.html.twig' %}
+    {% endfor %}
+{% endblock %}

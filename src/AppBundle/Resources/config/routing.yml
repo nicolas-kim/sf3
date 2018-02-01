@@ -1,11 +1,40 @@
-
 submit_ticket:
     path:     /tickets/submit
-    defaults: { _controller: AppBundle:Sales:submitTicket }
+    defaults: { _controller: AppBundle:Tickets:submitTicket }
 
 ticket_submission_successful:
     path:     /tickets/submit/success
-    defaults: { _controller: AppBundle:Sales:ticketSubmissionSuccessful }
+    defaults: { _controller: AppBundle:Tickets:ticketSubmissionSuccessful }
+
+latest_submitted_tickets:
+#    path:     /tickets/latest
+    path:     /
+    defaults: { _controller: AppBundle:Tickets:latestSubmittedTickets }
+
+hot_in_trend_tickets:
+    path:     /tickets/hot
+    defaults: { _controller: AppBundle:Tickets:hotTickets }
+
+view_ticket_details:
+    path:     /tickets/{ticketId}/details
+    defaults: { _controller: AppBundle:Tickets:viewTicketDetails }
+
+make_an_offer:
+    path:     /offers/make/{ticketId}
+    defaults: { _controller: AppBundle:Offers:makeAnOffer }
+
+offer_successfully_made:
+    path:     /offers/success
+    defaults: { _controller: AppBundle:Offers:offerSuccessfullyMade }
+
+accept_offer:
+    path:     /offers/{offerId}/accept
+#    methods: ['POST']
+    defaults: { _controller: AppBundle:Offers:acceptOffer }
+
+pending_offers_for_current_member:
+    path:     /tickets/offers/mine
+    defaults: { _controller: AppBundle:Offers:listAllOffersMadeForMyTickets }
 
 list_buyable_tickets:
     path:     /tickets/list

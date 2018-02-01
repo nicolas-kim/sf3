@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ ticketDetails.eventName }}{% endblock %}
+
+{% block body %}
+    <div class="ticket-details">
+        <p>{{ ticketDetails.eventName }}
+            <time datetime="{{ ticketDetails.eventDate | date }}">{{ ticketDetails.eventDate | date }}</time>
+            <i>({% transchoice ticketDetails.numberOfOffersMade with {'%count%': ticketDetails.numberOfOffersMade }%}
+                tickets.number_of_offers_made
+                {% endtranschoice %})</i>
+        </p>
+        <p>{{ ticketDetails.eventDescription }}</p>
+        <nav>
+            <a class="btn btn-primary" href="{{ path('make_an_offer', {'ticketId': ticketDetails.ticketId}) }}">Make an offer</a>
+        </nav>
+
+        {{ form(offerForm) }}
+
+    </div>
+
+{% endblock %}

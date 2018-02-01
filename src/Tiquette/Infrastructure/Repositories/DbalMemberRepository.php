@@ -53,7 +53,7 @@ SELECT * FROM members WHERE email = :email LIMIT 1;
 SQL;
 
         $statement = $this->connection->prepare($query);
-        $statement->execute(['email' => $email]);
+        $statement->execute(['email' => (string) $email]);
         $row = $statement->fetch(\PDO::FETCH_ASSOC);
 
         if (!$row) {
