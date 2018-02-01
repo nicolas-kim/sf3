@@ -39,6 +39,12 @@ SQL;
         ]);
     }
 
+    public function findOffersFromIdTicket($id): array
+    {
+        $oui = $this->connection->fetchAll("SELECT * FROM offers WHERE ticket_uuid = '$id'");
+        return $oui;
+    }
+
     private function hydrateFromRow(array $row): Offer
     {
         return Offer::fromArray($row);

@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Offers for {{ ticket.eventName }}{% endblock %}
+
+{% block body %}
+    <h4>Offers for <b>{{ ticket.eventName }}</b></h4>
+    <table style="margin: 20px 0 50px 0;">
+        <tr>
+            <th style="padding:0 10px 0 10px;">Proposed price</th>
+            <th style="padding:0 10px 0 10px;">Price currency</th>
+            <th style="padding:0 10px 0 10px;">Buyer message</th>
+        </tr>
+    {% for offer in offers %}
+        <tr>
+            <td style="padding:0 10px 0 10px;">{{ offer.proposed_price }}</td>
+            <td style="padding:0 10px 0 10px;">{{ offer.price_currency }}</td>
+            <td style="padding:0 10px 0 10px;">{{ offer.buyer_message }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

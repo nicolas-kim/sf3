@@ -48,4 +48,12 @@ class OffersController extends Controller
     {
         return $this->render('@App/Offers/offer_successfully_made.html.twig');
     }
+
+    public function viewOffersForTicketAction(Request $request): Response
+    {
+        $ticketId = $request->get('ticketId');
+        $offers = $this->get('repositories.offer')->findOffersFromIdTicket($ticketId);
+        $ticket = $this->get('repositories.ticket')->getTicketDetails(TicketId::fromString($ticketId));
+        return $this->render('@App/Offers/offers_for_ticket.html.twig', ['offers' => $offers, 'ticket' => $ticket]);
+    }
 }
