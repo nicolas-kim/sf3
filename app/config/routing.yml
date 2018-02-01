@@ -1,2 +1,8 @@
+homepage:
+  methods: 'GET'
+  path: '/'
+  defaults:
+    _controller: AppBundle:Default:index
+
 app_bundle:
   resource: '@AppBundle/Resources/config/routing.yml'

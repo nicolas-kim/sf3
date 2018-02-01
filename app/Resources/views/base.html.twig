@@ -16,6 +16,7 @@
             <ul class="nav nav-pills">
                 <li class="nav-item"><a class="nav-link" href="{{ path('latest_submitted_tickets') }}">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ path('submit_ticket') }}">Vendre un ticket</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('hot_in_trend_tickets') }}">Les tickets chauds</a></li>
                 {%  if not is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li><a class="nav-link" href="{{ path('member_sign_in') }}">Se connecter</a></li>
                     <li><a class="nav-link" href="{{ path('member_sign_up') }}">S'inscrire</a></li>
