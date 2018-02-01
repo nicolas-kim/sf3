@@ -6,6 +6,7 @@
 namespace AppBundle\Utils;
 
 use AppBundle\Forms\TicketSubmission;
+use Tiquette\Domain\Price;
 use Tiquette\Domain\Ticket;
 
 class TicketFactory
@@ -16,7 +17,7 @@ class TicketFactory
             $ticketSubmission->eventName,
             \DateTimeImmutable::createFromMutable($ticketSubmission->eventDate),
             $ticketSubmission->eventDescription,
-            0
+            Price::inLowestSubunit($ticketSubmission->boughtAtPrice, 'EUR')
         );
     }
 }

@@ -21,4 +21,19 @@ class InMemoryTicketRepository implements TicketRepository
     {
         return $this->tickets;
     }
+
+    public function findLatestSubmittedTickets(): array
+    {
+        throw new \RuntimeException(sprintf('Method "%s::%s" is not yet implemented', __CLASS__, __METHOD__));
+    }
+
+    public function findHotTickets(): array
+    {
+        throw new \RuntimeException(sprintf('Method "%s::%s" is not yet implemented', __CLASS__, __METHOD__));
+    }
+
+    public function findOutdatedTickets(): array
+    {
+        throw new \RuntimeException(sprintf('Method "%s::%s" is not yet implemented', __CLASS__, __METHOD__));
+    }
 }

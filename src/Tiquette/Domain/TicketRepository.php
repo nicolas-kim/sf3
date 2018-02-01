@@ -11,4 +11,7 @@ interface TicketRepository
 
     /** @return Ticket[] */
     public function findAll(): array;
+
+    public function findLatestSubmittedTickets(): array;
+    public function findHotTickets(): array;
 }

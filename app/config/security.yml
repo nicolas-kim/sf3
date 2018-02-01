@@ -31,3 +31,4 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/tickets/submit, roles: ROLE_USER }
+        - { path: ^/offers/make/.*, roles: ROLE_USER }

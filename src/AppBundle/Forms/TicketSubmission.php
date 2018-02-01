@@ -18,4 +18,6 @@ class TicketSubmission
 
     /** @Assert\NotBlank */
     public $eventDescription;
+
+    public $boughtAtPrice;
 }

@@ -7,6 +7,7 @@ namespace AppBundle\Security;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use Tiquette\Domain\Member;
+use Tiquette\Domain\MemberId;
 
 class UserAccount implements UserInterface
 {
@@ -15,6 +16,11 @@ class UserAccount implements UserInterface
     public static function fromMember(Member $member): self
     {
         return new self($member);
+    }
+
+    public function getId(): MemberId
+    {
+        return $this->member->getId();
     }
 
     public function getRoles(): array

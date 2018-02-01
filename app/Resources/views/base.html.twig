@@ -14,7 +14,7 @@
     <div class="app-masthead">
         <div class="container">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link" href="{{ path('homepage') }}">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('latest_submitted_tickets') }}">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ path('submit_ticket') }}">Vendre un ticket</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ path('list_buyable_tickets') }}">Liste des tickets</a></li>
                 {%  if not is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -45,7 +45,6 @@
             {% endfor %}
 
             <h1 class="app-title">Metinet</h1>
-            <p class="lead app-description">Description</p>
         </div>
     </div>
 </header>
