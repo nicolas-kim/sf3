@@ -12,6 +12,7 @@ class Offer
     private $buyerId;
     private $proposedPrice;
     private $buyerMessage;
+    private $acceptedOn;
 
     public static function for(TicketId $ticketId, MemberId $buyerId,
         Price $proposedPrice, string $buyerMessage): self
@@ -20,18 +21,24 @@ class Offer
     }
 
     private function __construct(OfferId $id, TicketId $ticketId, MemberId $buyerId,
-        Price $proposedPrice, string $buyerMessage)
+        Price $proposedPrice, string $buyerMessage, ?\DateTimeImmutable $acceptedOn = null)
     {
         $this->id = $id;
         $this->ticketId = $ticketId;
         $this->buyerId = $buyerId;
         $this->proposedPrice = $proposedPrice;
         $this->buyerMessage = $buyerMessage;
+        $this->acceptedOn = $acceptedOn;
     }
 
     public function getId(): OfferId
     {
         return $this->id;
+    }
+
+    public function getAcceptedOn(): ?\DateTimeImmutable
+    {
+        return $this->acceptedOn;
     }
 
     public function getTicketId(): TicketId
@@ -54,6 +61,16 @@ class Offer
         return $this->buyerMessage;
     }
 
+    public function hasBeenAccepted(): bool
+    {
+        return (bool) $this->acceptedOn;
+    }
+
+    public function accept(): void
+    {
+        $this->acceptedOn = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
+    }
+
     public static function fromArray(array $data): self
     {
         return new self(
@@ -61,7 +78,10 @@ class Offer
             TicketId::fromString($data['ticket_uuid']),
             MemberId::fromString($data['buyer_uuid']),
             Price::inLowestSubunit($data['proposed_price'], $data['price_currency']),
-            $data['buyer_message']
+            $data['buyer_message'],
+            $data['accepted_on'] !== null
+                ? \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $data['accepted_on'])
+                : null
         );
     }
 }

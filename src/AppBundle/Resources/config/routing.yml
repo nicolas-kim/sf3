@@ -27,6 +27,15 @@ offer_successfully_made:
     path:     /offers/success
     defaults: { _controller: AppBundle:Offers:offerSuccessfullyMade }
 
+accept_offer:
+    path:     /offers/{offerId}/accept
+#    methods: ['POST']
+    defaults: { _controller: AppBundle:Offers:acceptOffer }
+
+pending_offers_for_current_member:
+    path:     /tickets/offers/mine
+    defaults: { _controller: AppBundle:Offers:listAllOffersMadeForMyTickets }
+
 member_sign_up:
     path:     /members/signup
     methods: ['GET', 'POST']

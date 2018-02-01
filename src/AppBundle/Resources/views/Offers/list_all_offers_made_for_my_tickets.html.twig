@@ -1,0 +1,8 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+{% for offer in offers %}
+    {{ dump(offer) }}
+    <a class="btn btn-primary" href="{{ path('accept_offer', {'offerId': offer.id }) }}">Accepter l'offre</a>
+{% endfor %}
+{% endblock %}

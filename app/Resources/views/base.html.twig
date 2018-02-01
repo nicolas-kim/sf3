@@ -20,6 +20,7 @@
                     <li><a class="nav-link" href="{{ path('member_sign_in') }}">Se connecter</a></li>
                     <li><a class="nav-link" href="{{ path('member_sign_up') }}">S'inscrire</a></li>
                 {% else %}
+                    <li><a class="nav-link" href="{{ path('pending_offers_for_current_member') }}">Voir les offres sur mes ventes</a></li>
                     <li><a class="nav-link" href="{{ path('member_sign_out') }}">Déconnexion</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}

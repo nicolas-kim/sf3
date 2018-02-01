@@ -5,5 +5,6 @@ CREATE TABLE `offers` (
   `buyer_message` text NOT NULL,
   `ticket_uuid` char(36) NOT NULL DEFAULT '',
   `buyer_uuid` char(36) NOT NULL DEFAULT '',
+  `accepted_on` datetime DEFAULT NULL,
   PRIMARY KEY (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

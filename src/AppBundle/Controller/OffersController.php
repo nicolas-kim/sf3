@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Forms\Offer as OfferDTO;
 use Tiquette\Domain\Offer;
+use Tiquette\Domain\OfferId;
 use Tiquette\Domain\Price;
 use Tiquette\Domain\TicketId;
 
@@ -47,5 +48,25 @@ class OffersController extends Controller
     public function offerSuccessfullyMadeAction(Request $request): Response
     {
         return $this->render('@App/Offers/offer_successfully_made.html.twig');
+    }
+
+    public function listAllOffersMadeForMyTicketsAction(Request $request)
+    {
+        $offers = $this->get('repositories.offer')->findPendingOffersForMember(
+            $this->getUser()->getId()
+        );
+
+        return $this->render('@App/Offers/list_all_offers_made_for_my_tickets.html.twig', ['offers' => $offers]);
+    }
+
+    public function acceptOfferAction(Request $request): Response
+    {
+        $offerId = OfferId::fromString($request->get('offerId'));
+
+        $this->get('offers_service')->acceptOffer($offerId);
+
+        $this->addFlash('info', 'L\'offre a bien été accepté !');
+        
+        return $this->redirectToRoute('latest_submitted_tickets');
     }
 }

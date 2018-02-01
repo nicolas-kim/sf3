@@ -9,6 +9,8 @@ interface TicketRepository
 {
     public function save(Ticket $ticket): void;
 
+    public function get(TicketId $ticketId): Ticket;
+
     /** @return Ticket[] */
     public function findAll(): array;
 
