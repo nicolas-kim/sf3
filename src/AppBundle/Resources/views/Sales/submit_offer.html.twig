@@ -4,9 +4,10 @@
 
 {% block body %}
     {% for t in ticket %}
-    Name: {{ t.event_name }}
-    Description: {{ t.event_description }}
-    Date: {{ t.event_date }}
+    Name: {{ t.event_name }}<br>
+    Description: {{ t.event_description }}<br>
+    Date: {{ t.event_date }}<br>
     {% endfor %}
+    <br>
     {{ form(offerSubmissionForm) }}
 {% endblock %}
