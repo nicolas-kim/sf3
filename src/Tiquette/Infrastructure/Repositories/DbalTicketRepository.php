@@ -70,18 +70,7 @@ SQL;
 
     public function findTicketFromName($name): array
     {
-        $query=<<<SQL
-SELECT * FROM tickets WHERE event_name = "$name";
-SQL;
-        $statement = $this->connection->prepare($query);
-        $statement->execute();
-
-        $ticket = [];
-
-        while ($row = $statement->fetch(\PDO::FETCH_ASSOC)) {
-
-            $ticket[] = $this->hydrateFromRow($row);
-        }
+        $ticket = $this->connection->fetchAll("SELECT * FROM tickets WHERE event_name = '$name'");
 
         return $ticket;
 
